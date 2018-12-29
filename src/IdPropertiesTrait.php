@@ -1,6 +1,6 @@
 <?php
 
-namespace Tmx\Utils;
+namespace Yosigosi\TmxUtils;
 
 trait IdPropertiesTrait {
   private $idproperties = array ();

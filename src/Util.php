@@ -1,6 +1,6 @@
 <?php
 
-namespace Tmx\Utils;
+namespace Yosigosi\TmxUtils;
 
 class Util {
   static function buildImage($file = '', $zoom = 1, $rot = '') {
