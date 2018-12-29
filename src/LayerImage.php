@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\tmx\Library;
+namespace Tmx\Utils;
 
 class LayerImage extends Layer {
   

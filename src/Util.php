@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\tmx\Library;
+namespace Tmx\Utils;
 
 class Util {
   static function buildImage($file = '', $zoom = 1, $rot = '') {
