@@ -26,7 +26,7 @@
   },
   "autoload" : {
     "psr-4" : {
-      "Yosigosi\\Tmx\\Utils\\" : "src/"
+      "Yosigosi\\TmxUtils\\" : "src/"
     }
   },
   "extra": {
