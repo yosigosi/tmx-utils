@@ -26,39 +26,39 @@ class LayerImage extends Layer {
   
   public function isValid() {
     if (! is_string ( $this->name )) {
-      throw new Exception ( 'Incorrect imagelayer name value.' );
+      throw new \Exception ( 'Incorrect imagelayer name value.' );
       return false;
     }
     if (! is_int ( $this->x )) {
-      throw new Exception ( 'Incorrect imagelayer x value.' );
+      throw new \Exception ( 'Incorrect imagelayer x value.' );
       return false;
     }
     if (! is_int ( $this->y )) {
-      throw new Exception ( 'Incorrect imagelayer y value.' );
+      throw new \Exception ( 'Incorrect imagelayer y value.' );
       return false;
     }
     if (! is_int ( $this->width ) || $this->width < 0) {
-      throw new Exception ( 'Incorrect imagelayer width .' );
+      throw new \Exception ( 'Incorrect imagelayer width .' );
       return false;
     }
     if (! is_int ( $this->height ) || $this->height < 0) {
-      throw new Exception ( 'Incorrect imagelayer height.' );
+      throw new \Exception ( 'Incorrect imagelayer height.' );
       return false;
     }
     if (! is_int ( $this->opacity ) || ($this->opacity != 0 && $this->opacity != 1)) {
-      throw new Exception ( 'Incorrect imagelayer opacity value.' );
+      throw new \Exception ( 'Incorrect imagelayer opacity value.' );
       return false;
     }
     if (! is_int ( $his->visible ) || ($this->visible != 0 && $this->visible != 1)) {
-      throw new Exception ( 'Incorrect imagelayer visible value.' );
+      throw new \Exception ( 'Incorrect imagelayer visible value.' );
       return false;
     }
     if (! is_string ( $this->source )) {
-      throw new Exception ( 'Incorrent imagelayer image source value.' );
+      throw new \Exception ( 'Incorrent imagelayer image source value.' );
       return false;
     }
     if (! is_string ( $this->trans )) {
-      throw new Exception ( 'Incorrent imagelayer image trans value.' );
+      throw new \Exception ( 'Incorrent imagelayer image trans value.' );
       return false;
     }
     return true;

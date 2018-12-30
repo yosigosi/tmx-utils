@@ -59,7 +59,7 @@ class Map {
         $this->load_imagelayer($i, $ly, $recur);
       }
       else {
-        throw new Exception('unknown element in xml file (from '.__FILE__.':'.__LINE__.')');
+        throw new \Exception('unknown element in xml file (from '.__FILE__.':'.__LINE__.')');
         return false;
       }
       ++$i;
@@ -89,7 +89,7 @@ class Map {
     $this->filename = $filename;
     $this->xml = Tools::load_xml_from_file( $filename );
     if( $this->xml===false ) {
-      throw new Exception('File \''.$filename.'\' not found.');
+      throw new \Exception('File \''.$filename.'\' not found.');
     }
     $this->load_map();
     if((bool)$this->xml->properties!==false) {
@@ -113,31 +113,31 @@ class Map {
   
   public function isValid() {
     if($this->version!=='1.0') {
-      throw new Exception('Incorrect map version.');
+      throw new \Exception('Incorrect map version.');
       return false;
     }
     if(!in_array($this->orientation, array('orthogonal', 'isometric', 'stagerred'))) {
-      throw new Exception('Incorrect map orientation.');
+      throw new \Exception('Incorrect map orientation.');
       return false;
     }
     if(!is_int($this->width ) || $this->width <0) {
-      throw new Exception('Incorrect map width .');
+      throw new \Exception('Incorrect map width .');
       return false;
     }
     if(!is_int($this->height) || $this->height<0) {
-      throw new Exception('Incorrect map height.');
+      throw new \Exception('Incorrect map height.');
       return false;
     }
     if(!is_int($this->tilewidth ) || $this->tilewidth <0) {
-      throw new Exception('Incorrect map tilewidth .');
+      throw new \Exception('Incorrect map tilewidth .');
       return false;
     }
     if(!is_int($this->tileheight) || $this->tileheight<0) {
-      throw new Exception('Incorrect map tileheight.');
+      throw new \Exception('Incorrect map tileheight.');
       return false;
     }
     if(!is_string($this->backgroundcolor)) {
-      throw new Exception('Incorrect map backgroundcolor.');
+      throw new \Exception('Incorrect map backgroundcolor.');
       return false;
     }
     return true;
@@ -147,26 +147,26 @@ class Map {
     $this->isValid();
     foreach($this->tilesets as $i=>$ts) {
       if(!($ts instanceof Tileset)) {
-        throw new Exception('Incorrect map tileset.');
+        throw new \Exception('Incorrect map tileset.');
         return false;
       }
       try {
         $ts->isValid();
       }
-      catch(Exception $ex) {
+      catch(\Exception $ex) {
         print('Tileset n°'.$i."\n");
         throw $ex;
       }
     }
     foreach($this->layers as $i->$ly) {
       if(!($ly instanceof Layer)) {
-        throw new Exception('Incorrect map element.');
+        throw new \Exception('Incorrect map element.');
         return false;
       }
       try {
         $ly->isValid();
       }
-      catch(Exception $ex) {
+      catch(\Exception $ex) {
         print('*Layer n°'.$i."\n");
         throw $ex;
       }

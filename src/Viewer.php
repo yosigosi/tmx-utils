@@ -104,12 +104,12 @@ class Viewer {
             } else if (array_key_exists ( 'imagesource', $ar )) {
               $this->ts_imgs [$i] [$id] = Tools::create_image_from( dirname ( $this->map->filename ) . '/' . $ar ['imagesource'] );
             } else {
-              throw new Exception ( 'Other format of multiple image tileset not implemented yet.' );
+              throw new \Exception ( 'Other format of multiple image tileset not implemented yet.' );
             }
           }
         }
         // rest is... different or egal
-        throw new Exception ( 'Miss transparency / antialias / alphablending on multiple image tilesets.' );
+        throw new \Exception ( 'Miss transparency / antialias / alphablending on multiple image tilesets.' );
         return;
       } else {
         $this->ts_imgs [$i] = Tools::create_image_from ( dirname ( $this->map->filename ) . '/' . dirname ( $ts->sourceTSX ) . '/' . $ts->source );
@@ -544,7 +544,7 @@ class Viewer {
               Tools::image_copy_and_resize ( $this->img, $img_, $this->ox + $il->x * $this->zoom, $this->oy + $il->y * $this->zoom, 0, 0, $sw * $this->zoom, $sh * $this->zoom, $sw, $sh );
             }
           } elseif ($this->map->orientation == 'isometric') {
-            throw new Exception ( 'image layer on isometric map not yet implemented.' );
+            throw new \Exception ( 'image layer on isometric map not yet implemented.' );
           }
           imagedestroy ( $img_ );
           unset ( $img_ );

@@ -68,39 +68,39 @@ class LayerObject extends Layer {
   
   public function isValid() {
     if(!is_string($this->name)) {
-      throw new Exception('Incorrect objectlayer name value.');
+      throw new \Exception('Incorrect objectlayer name value.');
       return false;
     }
     if(!is_int($this->x)) {
-      throw new Exception('Incorrect objectlayer x value.');
+      throw new \Exception('Incorrect objectlayer x value.');
       return false;
     }
     if(!is_int($this->y)) {
-      throw new Exception('Incorrect objectlayer y value.');
+      throw new \Exception('Incorrect objectlayer y value.');
       return false;
     }
     if(!is_int($this->width ) || $this->width <0) {
-      throw new Exception('Incorrect objectlayer width .');
+      throw new \Exception('Incorrect objectlayer width .');
       return false;
     }
     if(!is_int($this->height) || $this->height<0) {
-      throw new Exception('Incorrect objectlayer height.');
+      throw new \Exception('Incorrect objectlayer height.');
       return false;
     }
     if(!is_string($this->color)) {
-      throw new Exception('Incorrect objectlayer color value.');
+      throw new \Exception('Incorrect objectlayer color value.');
       return false;
     }
     if(!is_int($this->opacity) || ($this->opacity!=0 && $this->opacity!=1)) {
-      throw new Exception('Incorrect objectlayer opacity value.');
+      throw new \Exception('Incorrect objectlayer opacity value.');
       return false;
     }
     if(!is_int($his->visible) || ($this->visible!=0 && $this->visible!=1)) {
-      throw new Exception('Incorrect objectlayer visible value.');
+      throw new \Exception('Incorrect objectlayer visible value.');
       return false;
     }
     if(!is_array($this->objects)) {
-      throw new Exception('Incorrect objectlayer objects array.');
+      throw new \Exception('Incorrect objectlayer objects array.');
       return false;
     }
     return true;

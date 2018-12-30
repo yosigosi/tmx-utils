@@ -109,27 +109,27 @@ class LayerTile extends Layer {
   }
   public function isValid() {
     if (! is_string ( $this->name )) {
-      throw new Exception ( 'Incorrect tilelayer name.' );
+      throw new \Exception ( 'Incorrect tilelayer name.' );
       return false;
     }
     if (! is_int ( $this->x )) {
-      throw new Exception ( 'Incorrect tilelayer x value.' );
+      throw new \Exception ( 'Incorrect tilelayer x value.' );
       return false;
     }
     if (! is_int ( $this->y )) {
-      throw new Exception ( 'Incorrect tilelayer y value.' );
+      throw new \Exception ( 'Incorrect tilelayer y value.' );
       return false;
     }
     if (! is_int ( $this->width ) || $this->width < 0) {
-      throw new Exception ( 'Incorrect tilelayer width .' );
+      throw new \Exception ( 'Incorrect tilelayer width .' );
       return false;
     }
     if (! is_int ( $this->height ) || $this->height < 0) {
-      throw new Exception ( 'Incorrect tilelayer height.' );
+      throw new \Exception ( 'Incorrect tilelayer height.' );
       return false;
     }
     if (! is_int ( $this->visible ) || ($this->visible != 0 && $this->visible != 1)) {
-      throw new Exception ( 'Incorrect tilelayer visible.' );
+      throw new \Exception ( 'Incorrect tilelayer visible.' );
       return false;
     }
     if (! in_array ( $this->encoding, array (
@@ -138,7 +138,7 @@ class LayerTile extends Layer {
         'xml',
         'none'
     ) )) {
-      throw new Exception ( 'Incorrect tilelayer encoding.' );
+      throw new \Exception ( 'Incorrect tilelayer encoding.' );
       return false;
     }
     if (! in_array ( $this->compression, array (
@@ -148,7 +148,7 @@ class LayerTile extends Layer {
         'bzip2',
         'none'
     ) )) {
-      throw new Exception ( 'Incorrect tilelayer compression.' );
+      throw new \Exception ( 'Incorrect tilelayer compression.' );
       return false;
     }
     if ($this->map != NULL) {
@@ -156,7 +156,7 @@ class LayerTile extends Layer {
       // if( strlen($this->data) != (4*$this->map->width*$this->map->height) ) {
       if (strlen ( $this->data ) != (4 * $this->width * $this->height)) {
         var_dump ( strlen ( $this->data ), 4 * $this->width * $this->height );
-        throw new Exception ( 'Incorrect tilelayer data.' );
+        throw new \Exception ( 'Incorrect tilelayer data.' );
         return false;
       }
     }

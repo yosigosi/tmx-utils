@@ -54,7 +54,7 @@ class Tileset {
     $this->filename = $filename;
     $xml = Tools::load_xml_from_file( $filename );
     if ($xml === false) {
-      throw new Exception ( 'File \'' . $filename . '\' not found.' );
+      throw new \Exception ( 'File \'' . $filename . '\' not found.' );
     }
     return $this->load_from_element ( $xml );
   }
@@ -161,9 +161,9 @@ class Tileset {
         if ($terrain ['name'] === $id)
           return $terrain ['tile'];
       }
-      throw new Exception ( 'terrain not found' );
+      throw new \Exception ( 'terrain not found' );
     } else {
-      throw new Exception ( 'bad terrain identifiant.' );
+      throw new \Exception ( 'bad terrain identifiant.' );
     }
   }
   public function get_tile_from_terrains($tl, $tr, $bl, $br) {
@@ -172,67 +172,67 @@ class Tileset {
       if ($tile ['terrain'] === $value)
         return $id;
     }
-    throw new Exception ( 'terrain tile not found' );
+    throw new \Exception ( 'terrain tile not found' );
   }
   public function isValid() {
     if (! is_string ( $this->sourceTSX )) {
-      throw new Exception ( 'Incorrect tileset source.' );
+      throw new \Exception ( 'Incorrect tileset source.' );
       return false;
     }
     if (! is_int ( $this->firstgid ) || $this->firstgid < 1) {
-      throw new Exception ( 'Incorrect tileset firstgid.' );
+      throw new \Exception ( 'Incorrect tileset firstgid.' );
       return false;
     }
     if (! is_string ( $this->name )) {
-      throw new Exception ( 'Incorrect tileset name.' );
+      throw new \Exception ( 'Incorrect tileset name.' );
       return false;
     }
     if (! is_int ( $this->tilewidth ) || $this->tilewidth < 0) {
-      throw new Exception ( 'Incorrect tileset width .' );
+      throw new \Exception ( 'Incorrect tileset width .' );
       return false;
     }
     if (! is_int ( $this->tileheight ) || $this->tileheight < 0) {
-      throw new Exception ( 'Incorrect tileset height.' );
+      throw new \Exception ( 'Incorrect tileset height.' );
       return false;
     }
     if (! is_int ( $this->tileoffsetx )) {
-      throw new Exception ( 'Incorrect tileset tileoffsetx.' );
+      throw new \Exception ( 'Incorrect tileset tileoffsetx.' );
       return false;
     }
     if (! is_int ( $this->tileoffsety )) {
-      throw new Exception ( 'Incorrect tileset tileoffsety .' );
+      throw new \Exception ( 'Incorrect tileset tileoffsety .' );
       return false;
     }
     if (! is_int ( $this->margin ) || $this->margin < 0) {
-      throw new Exception ( 'Incorrect tileset margin.' );
+      throw new \Exception ( 'Incorrect tileset margin.' );
       return false;
     }
     if (! is_int ( $this->spacing ) || $this->spacing < 0) {
-      throw new Exception ( 'Incorrect tileset spacing.' );
+      throw new \Exception ( 'Incorrect tileset spacing.' );
       return false;
     }
     if (! is_string ( $this->source )) {
-      throw new Exception ( 'Incorrect tileset source.' );
+      throw new \Exception ( 'Incorrect tileset source.' );
       return false;
     }
     if (! is_string ( $this->trans ) || strlen ( $this->trans ) != 6 || strcspn ( $this->trans, '0123456789abcdefABCDEF' ) != 0) {
-      throw new Exception ( 'Incorrect tileset trans.' );
+      throw new \Exception ( 'Incorrect tileset trans.' );
       return false;
     }
     if (! is_int ( $this->width ) || $this->width < 0) {
-      throw new Exception ( 'Incorrect tileset width .' );
+      throw new \Exception ( 'Incorrect tileset width .' );
       return false;
     }
     if (! is_int ( $this->height ) || $this->height < 0) {
-      throw new Exception ( 'Incorrect tileset height.' );
+      throw new \Exception ( 'Incorrect tileset height.' );
       return false;
     }
     if (! is_array ( $this->terrains )) {
-      throw new Exception ( 'Incorrect tileset terrains.' );
+      throw new \Exception ( 'Incorrect tileset terrains.' );
       return false;
     }
     if (! is_array ( $this->tiles )) {
-      throw new Exception ( 'Incorrect tileset tiles.' );
+      throw new \Exception ( 'Incorrect tileset tiles.' );
       return false;
     }
     return true;
