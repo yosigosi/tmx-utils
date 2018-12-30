@@ -554,14 +554,9 @@ class Viewer {
       unset ( $tl, $ol, $il );
     }
   }
-  public function render($file = NULL) {
-    imagesavealpha ( $this->img, true );
-
-    // ini_set('output_buffering','off');
-
-    // imagejpeg($this->img, $file, 80);
-    imagepng ( $this->img, $file, 7 );
-  }
   
+  public function getImageResource($file = NULL) {
+    return $this->img;
+  }
   
 }

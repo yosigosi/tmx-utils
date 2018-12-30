@@ -3,12 +3,28 @@
 namespace Yosigosi\TmxUtils;
 
 class Util {
+  
+  /**
+   * Return an object with an image view of a TMX map.
+   *  
+   * @param string $file
+   * @param number $zoom
+   * @param string $rot
+   * 
+   * @return \stdClass
+   * 
+   *   Attributes:
+   *     - is_error: error flag.
+   *     - error_info: error info.
+   *     - gd_resource: gd image resource.  
+   * 
+   */
   static function buildImage($file, $zoom = 1, $rot = '') {
 
     $image = new \stdClass();
-    $image->error = TRUE;
+    $image->is_error = TRUE;
     
-    $output_buffering_intial = ini_get('output_buffering');
+    $output_buffering_initial = ini_get('output_buffering');
     
     try {
       
@@ -33,7 +49,7 @@ class Util {
   
       ini_set ( 'output_buffering', 'off' );
   
-      $data = ob_get_clean ();
+      $data = ob_get_clean();
       if (! empty ( $data )) {
         $image->data = $data;
       }
@@ -45,22 +61,21 @@ class Util {
         $viewer->init_draw();
         $viewer->draw();
         
-        $data = ob_get_contents ();
+        $data = ob_get_contents();
         if (strlen ( $data ) != 0) {
-          $image->data = $data;
+          $image->error_info = $data;
         }
         else {
-          $viewer->render();
-          $image->data = ob_get_clean();
-          $image->error = FALSE;
+          $image->is_error = FALSE;
+          $image->gd_resource = $viewer->getImageResource();
         }
       }
     }
     catch( \Throwable $e ) {
-      $image->data = $e->__toString();
+      $image->error_info = $e->__toString();
     }
     
-    ini_set ( 'output_buffering', $output_buffering_intial );
+    ini_set ( 'output_buffering', $output_buffering_initial );
     
     return $image;
   }
