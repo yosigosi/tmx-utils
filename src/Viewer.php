@@ -28,7 +28,7 @@ class Viewer {
     }
     $this->map = $map;
   }
-  private function rotateMap($rot) {
+  private function rotateMap($rot, $map) {
     if (! in_array ( $rot, array (
         '0',
         'ccw',
