@@ -10,6 +10,7 @@ class Viewer {
   public $draw_tiles = true;
   public $draw_objects = true;
   public $draw_images = true;
+  public $layers_nodraw = array();
   private $img = NULL;
   private $ts_imgs = array ();
   private $ts_largeur = array ();
@@ -369,8 +370,7 @@ class Viewer {
     if (! $this->draw_tiles) {
       return;
     }
-    $layers_nodraw = isset($_SESSION['layers_nodraw']) ? $_SESSION['layers_nodraw'] : array();
-    if (strlen ( $tl->name ) > 0 && in_array ( $tl->name, $layers_nodraw )) {
+    if (strlen ( $tl->name ) > 0 && in_array ( $tl->name, $this->layers_nodraw )) {
       return;
     }
     $jmax = min ( $tl->height, max ( $y + $h, PHP_INT_MAX ) );
