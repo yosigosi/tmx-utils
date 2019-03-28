@@ -10,6 +10,7 @@ class Viewer {
   public $draw_tiles = true;
   public $draw_objects = true;
   public $draw_images = true;
+  public $layers_nodraw = array();
   private $img = NULL;
   private $ts_imgs = array ();
   private $ts_largeur = array ();
@@ -222,7 +223,7 @@ class Viewer {
       trigger_error ( 'incorrect gid.', E_USER_ERROR );
       // die();
     }
-    
+
     if (! is_object ( $o )) {
       $tilesets_nodraw = [];
       if (strlen ( $this->map->tilesets [$ti]->name ) > 0 && in_array ( $this->map->tilesets [$ti]->name, $tilesets_nodraw )) {
@@ -294,17 +295,17 @@ class Viewer {
         $sw = imagesx ( $tsimg );
         $sh = imagesy ( $tsimg );
       }
-      
+
       if ($this->zoom == 1) {
         Tools::image_copy_and_resize( $this->img, $tsimg, $this->ox + $dx, $this->oy + $dy, $sx, $sy, $sw, $sh );
       } else {
         Tools::image_copy_and_resize( $this->img, $tsimg, $this->ox + $dx * $this->zoom, $this->oy + $dy * $this->zoom, $sx, $sy, $sw * $this->zoom, $sh * $this->zoom, $sw, $sh );
       }
-      
+
       if (! is_object ( $o )) {
         $this->draw_inside_tilelayer ( $ly, $j, $i );
       }
-    } 
+    }
     elseif ($this->map->orientation == 'isometric') {
       if (is_object ( $o )) {
         trigger_error ( 'not yet implemented', E_USER_ERROR );
@@ -339,13 +340,13 @@ class Viewer {
         // var_dump($dx, $dy, $sx, $sy, $sw, $sh);echo '<br/>'."\r\n";
         // die();
       }
-      
+
       if ($this->zoom == 1) {
         Tools::image_copy_and_resize( $this->img, $tsimg, $this->ox + $dx, $this->oy + $dy, $sx, $sy, $sw, $sh );
       } else {
         Tools::image_copy_and_resize( $this->img, $tsimg, $this->ox + $dx * $this->zoom, $this->oy + $dy * $this->zoom, $sx, $sy, $sw * $this->zoom, $sh * $this->zoom, $sw, $sh );
       }
-      
+
       if (! is_object ( $o )) {
         $this->draw_inside_tilelayer ( $ly, $j, $i );
       }
@@ -369,8 +370,7 @@ class Viewer {
     if (! $this->draw_tiles) {
       return;
     }
-    $layers_nodraw = array();
-    if (strlen ( $tl->name ) > 0 && in_array ( $tl->name, $layers_nodraw )) {
+    if (strlen ( $tl->name ) > 0 && in_array ( $tl->name, $this->layers_nodraw )) {
       return;
     }
     $jmax = min ( $tl->height, max ( $y + $h, PHP_INT_MAX ) );
@@ -519,7 +519,7 @@ class Viewer {
           if (function_exists ( 'imageantialias' )) {
             imageantialias ( $img_, false );
           }
-          
+
           // imagealphablending($img_, true);
           imagealphablending ( $img_, false );
           $transc = $il->trans;
@@ -554,9 +554,9 @@ class Viewer {
       unset ( $tl, $ol, $il );
     }
   }
-  
+
   public function getImageResource($file = NULL) {
     return $this->img;
   }
-  
+
 }
